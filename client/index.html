@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    
+    <meta property="og:title" content="Dubai Racing Cup - Interactive AR Journey" />
+    <meta property="og:description" content="Embark on a heritage trail and customize your digital horse companion." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://replit.com/public/images/opengraph.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@replit" />
+    <meta name="twitter:title" content="Dubai Racing Cup - AR Journey" />
+    <meta name="twitter:description" content="Embark on a heritage trail and customize your digital horse companion." />
+    <meta name="twitter:image" content="https://replit.com/public/images/opengraph.png" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Felipa&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Felipa&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <title>Dubai Racing Cup AR Journey</title>
+    <script>
+      window.addEventListener("error", function(e) {
+        if (e.message && e.message.indexOf("ResizeObserver") !== -1) {
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        }
+      }, true);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

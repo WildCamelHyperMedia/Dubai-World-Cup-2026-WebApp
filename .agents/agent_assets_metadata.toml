@@ -1,0 +1,116 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "zwXSw3qSwc8iwfEKMQ_Kt"
+uri = "file://generated-qrcodes/station-talli-qrcode.png"
+type = "image"
+title = "Station 1 — Talli (Embroidery)"
+
+[[outputs]]
+id = "oX9iUti1PSwxJX3ICwtLP"
+uri = "file://generated-qrcodes/station-leather-qrcode.png"
+type = "image"
+title = "Station 2 — Saddles (Leather)"
+
+[[outputs]]
+id = "58oEDgNOboGHVb4OHjd9W"
+uri = "file://generated-qrcodes/station-alkhous-qrcode.png"
+type = "image"
+title = "Station 3 — Al Khous (Palm Weaving)"
+
+[[outputs]]
+id = "3gD9vjAgJLU8q22KcQsN9"
+uri = "file://generated-qrcodes/station-weaving-qrcode.png"
+type = "image"
+title = "Station 4 — Sadu (Textiles)"
+
+[[outputs]]
+id = "-XUxYLK5o06lzZUSbt2Ii"
+uri = "file://generated-qrcodes/station-pottery-qrcode.png"
+type = "image"
+title = "Station 5 — Pottery"
+
+[[outputs]]
+id = "6oWSEvrlQDvVuJLeI9xKZ"
+uri = "file://generated-qrcodes/station-fabric-qrcode.png"
+type = "image"
+title = "Station 6 — Silks (Fabric)"
+
+[[outputs]]
+id = "s6gR3GSsARpi6oVZ5JHSZ"
+uri = "file://qr-codes-output/QR-TALLI30.png"
+type = "image"
+title = "Station 1 — Talli (TALLI30)"
+
+[[outputs]]
+id = "ggOolx8FNFUq1TFEHNmes"
+uri = "file://qr-codes-output/QR-SADU30.png"
+type = "image"
+title = "Station 2 — Sadu (SADU30)"
+
+[[outputs]]
+id = "G0Je1_NmxZL1f139Q258S"
+uri = "file://qr-codes-output/QR-SADDLE30.png"
+type = "image"
+title = "Station 3 — Saddle (SADDLE30)"
+
+[[outputs]]
+id = "r1Ju0ApBVTTowcAm96ZJt"
+uri = "file://qr-codes-output/QR-POTTERY30.png"
+type = "image"
+title = "Station 4 — Pottery (POTTERY30)"
+
+[[outputs]]
+id = "77nRMUTPYhTn0wQVfjEe_"
+uri = "file://qr-codes-output/QR-SILK30.png"
+type = "image"
+title = "Station 5 — Silk (SILK30)"
+
+[[outputs]]
+id = "WSyVIHf6j2XnRCmYCfmVg"
+uri = "file://qr-codes-output/QR-ALKHOUS30.png"
+type = "image"
+title = "Station 6 — Al Khous (ALKHOUS30)"
+
+[[outputs]]
+id = "EadN5KNGdVe1LYucRZgTZ"
+uri = "file://qr-codes-output/Station-TALLI30.png"
+type = "image"
+title = "Station 1 — The Art of Talli"
+
+[[outputs]]
+id = "sOWqKb5_GZsajQ51qpTSt"
+uri = "file://qr-codes-output/Station-SADU30.png"
+type = "image"
+title = "Station 2 — Sadu Weaving"
+
+[[outputs]]
+id = "UDck93xdXpJrLedFU0taH"
+uri = "file://qr-codes-output/Station-SADDLE30.png"
+type = "image"
+title = "Station 3 — Arabian Saddle Making"
+
+[[outputs]]
+id = "Z_LUewSJ-WWeHHnw6KKjB"
+uri = "file://qr-codes-output/Station-POTTERY30.png"
+type = "image"
+title = "Station 4 — Arabian Pottery"
+
+[[outputs]]
+id = "EK-Md_9UT8zlnga_So9ud"
+uri = "file://qr-codes-output/Station-SILK30.png"
+type = "image"
+title = "Station 5 — Luxury Fabric"
+
+[[outputs]]
+id = "VnUzgqvQeDO7P-rVjeuQA"
+uri = "file://qr-codes-output/Station-ALKHOUS30.png"
+type = "image"
+title = "Station 6 — Al Khous"
+
+[[outputs]]
+id = "khGZyhb14SzkrIIiSOMTt"
+uri = "file://qr-codes-output/Launch-DRC30.png"
+type = "image"
+title = "Welcome QR — Launch the Experience"

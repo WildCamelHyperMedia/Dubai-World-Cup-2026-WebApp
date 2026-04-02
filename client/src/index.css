@@ -1,0 +1,595 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./assets/css/custom.css";
+
+@font-face {
+  font-family: 'Guesswhat';
+  src: url('/fonts/guesswhat.ttf') format('truetype');
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text-main);
+  --color-card: var(--surface-1);
+  --color-card-foreground: var(--text-main);
+  --color-popover: var(--surface-1);
+  --color-popover-foreground: var(--text-main);
+  --color-primary: var(--primary);
+  --color-primary-foreground: #FFFFFF;
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--text-main);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--highlight);
+  --color-accent-foreground: #FFFFFF;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--primary);
+  
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+
+  --font-sans: 'Outfit', 'Apple Chancery', cursive, sans-serif;
+  --font-serif: 'Playfair Display', 'Apple Chancery', serif;
+  --font-display: 'Playfair Display', 'Apple Chancery', cursive;
+  --font-arabic: 'Guesswhat', 'Outfit', sans-serif;
+}
+
+:root {
+  --bg: #D4C4A8;
+  --surface-1: #E8DCC8;
+  --surface-2: #C8B898;
+  --border: #B0A080;
+
+  --primary: #5C3D2E;
+  --primary-hover: #4A3024;
+  --highlight: #C4883A;
+
+  --accent-teal: #5A7A5A;
+  --accent-purple: #5C3D2E;
+  --accent-coral: #8B3A2A;
+  --accent-sky: #2E4A8B;
+
+  --godolphin-blue: #2E4A8B;
+  --camel-tan: #B89B71;
+  --terracotta: #8B3A2A;
+  --sage-green: #5A7A5A;
+  --copper: #C4883A;
+  --chocolate: #5C3D2E;
+
+  --sadu-blue: #2E4A8B;
+  --sadu-copper: #C4883A;
+  --sadu-cream: #D4C4A8;
+
+  --text-main: #3A2518;
+  --text-muted: #7A6850;
+
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-text-main;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+html[dir="rtl"],
+html[dir="rtl"] body,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+html[dir="rtl"] p,
+html[dir="rtl"] span,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] label,
+html[dir="rtl"] a {
+  font-family: var(--font-arabic);
+}
+
+@layer utilities {
+  .glass-panel {
+    position: relative;
+    overflow: hidden;
+    background: rgba(232,220,200,0.85);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+  }
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/patterns/sadu-cream-grid.jpg');
+    background-size: 260px;
+    background-repeat: repeat;
+    opacity: 0.035;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    border-radius: inherit;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .shadow-heritage-sm {
+    box-shadow: 0 2px 8px rgba(92,61,46,0.12), 0 1px 3px rgba(92,61,46,0.08);
+  }
+  .shadow-heritage {
+    box-shadow: 0 4px 16px rgba(92,61,46,0.15), 0 2px 6px rgba(92,61,46,0.10);
+  }
+  .shadow-heritage-lg {
+    box-shadow: 0 8px 32px rgba(92,61,46,0.18), 0 4px 12px rgba(92,61,46,0.12);
+  }
+  .text-shadow-warm {
+    text-shadow: 0 1px 4px rgba(92,61,46,0.25), 0 0px 1px rgba(92,61,46,0.15);
+  }
+  .text-shadow-warm-lg {
+    text-shadow: 0 2px 8px rgba(92,61,46,0.30), 0 1px 3px rgba(92,61,46,0.20);
+  }
+}
+
+.arabesque-bg {
+  position: relative;
+}
+.arabesque-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-blue-grid.jpg');
+  background-size: 280px;
+  background-repeat: repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.arabesque-frame {
+  position: relative;
+  overflow: hidden;
+}
+.arabesque-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--godolphin-blue) 0%,
+    var(--copper) 25%,
+    var(--terracotta) 50%,
+    var(--copper) 75%,
+    var(--godolphin-blue) 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.gold-border {
+  position: relative;
+}
+.gold-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    var(--copper) 0%,
+    var(--camel-tan) 30%,
+    var(--copper) 50%,
+    var(--camel-tan) 70%,
+    var(--copper) 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.sadu-accent-card {
+  position: relative;
+  overflow: hidden;
+}
+.sadu-accent-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 300px;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.06;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+}
+
+.sadu-card-rich {
+  position: relative;
+  overflow: hidden;
+}
+.sadu-card-rich::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 240px;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.07;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.sadu-card-rich::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.sadu-strip-top {
+  position: relative;
+}
+.sadu-strip-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.heritage-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.heritage-divider::before,
+.heritage-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+}
+
+.gold-glow {
+  box-shadow: 0 4px 24px rgba(196,136,58,0.12), 0 2px 8px rgba(92,61,46,0.08);
+}
+
+@keyframes shimmer-move {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes mesh-drift {
+  0%,100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 50% 100%; }
+  75% { background-position: 0% 0%; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(0.5deg); }
+  66% { transform: translateY(4px) rotate(-0.5deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes gradient-text {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pattern-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 220px 220px; }
+}
+
+.mesh-bg {
+  background: 
+    radial-gradient(ellipse at 15% 0%, rgba(46,74,139,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196,136,58,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(90,122,90,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(139,58,42,0.04) 0%, transparent 50%),
+    var(--bg);
+}
+
+.mesh-bg-sadu {
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(46,74,139,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(196,136,58,0.08) 0%, transparent 50%),
+    var(--bg);
+}
+
+.btn-vivid {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--terracotta), var(--copper));
+  background-size: 200% 200%;
+  animation: mesh-drift 5s ease infinite;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.btn-vivid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 200px;
+  background-repeat: repeat;
+  opacity: 0.10;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.btn-vivid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer-move 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.btn-godolphin {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--godolphin-blue), #3A5AAF);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.btn-godolphin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 180px;
+  background-repeat: repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--terracotta), var(--copper));
+  background-size: 200% 200%;
+  animation: gradient-text 5s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-pop {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  box-shadow: 
+    0 1px 3px rgba(0,0,0,0.04),
+    0 8px 24px rgba(92,61,46,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card-pop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 260px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.card-pop:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 2px 6px rgba(0,0,0,0.06),
+    0 12px 32px rgba(92,61,46,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.sadu-fab {
+  position: relative;
+  overflow: hidden;
+}
+.sadu-fab::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background-image: url('/images/patterns/sadu-cream-large.jpg');
+  background-size: 120px;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.12;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  border-radius: inherit;
+}
+
+.sadu-popup {
+  position: relative;
+  overflow: hidden;
+}
+.sadu-popup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 280px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+.sadu-popup::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.sadu-shutter {
+  position: relative;
+}
+.sadu-shutter::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 80px;
+  background-repeat: repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.sadu-glass-card {
+  position: relative;
+  overflow: hidden;
+}
+.sadu-glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 240px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+.station-line-gradient {
+  background: linear-gradient(to bottom, var(--copper), var(--godolphin-blue), var(--terracotta));
+}
+
+.sadu-bg-strip {
+  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.sadu-pattern-overlay {
+  position: relative;
+}
+.sadu-pattern-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-size: 320px;
+  background-repeat: repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+.sadu-pattern-overlay-blue {
+  position: relative;
+}
+.sadu-pattern-overlay-blue::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/patterns/sadu-blue-rows.jpg');
+  background-size: 400px;
+  background-repeat: repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.sadu-border-bottom {
+  position: relative;
+}
+.sadu-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+.sadu-border-top {
+  position: relative;
+}
+.sadu-border-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
