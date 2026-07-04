@@ -21,19 +21,19 @@ export const HORSES: HorseInfo[] = [
     id: "rebels_romance",
     nameKey: "horse_rebels_romance",
     descKey: "horse_rebels_romance_desc",
-    image: "/images/horses/rebels_romance.png",
+    image: `${import.meta.env.BASE_URL}images/horses/rebels_romance.png`,
   },
   {
     id: "meydaan",
     nameKey: "horse_meydaan",
     descKey: "horse_meydaan_desc",
-    image: "/images/horses/meydaan.png",
+    image: `${import.meta.env.BASE_URL}images/horses/meydaan.png`,
   },
   {
     id: "commissioner_king",
     nameKey: "horse_commissioner_king",
     descKey: "horse_commissioner_king_desc",
-    image: "/images/horses/commissioner_king.png",
+    image: `${import.meta.env.BASE_URL}images/horses/commissioner_king.png`,
   },
 ];
 

@@ -5,8 +5,6 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, useGLTF, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import { ArrowLeft, Trophy, Play, SkipForward, Crown, Timer, Share2, RotateCcw, Send, ChevronRight, ChevronLeft, Zap, Clock, RotateCw } from "lucide-react";
-import { useJourney } from "@/lib/JourneyContext";
-import { apiRequest } from "@/lib/queryClient";
 
 class ModelErrorBoundary extends Component<
   { children: ReactNode; fallback: ReactNode },
@@ -62,6 +60,33 @@ interface LeaderboardEntry {
   rank: number;
   trackType: string;
   createdAt: string;
+}
+
+const LEADERBOARD_STORAGE_KEY = "raceLeaderboard";
+
+function readLeaderboard(): LeaderboardEntry[] {
+  try {
+    const raw = localStorage.getItem(LEADERBOARD_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((e) => e && typeof e.finishTime === "number")
+      .sort((a, b) => a.finishTime - b.finishTime)
+      .slice(0, 20);
+  } catch {
+    return [];
+  }
+}
+
+function saveLeaderboardEntry(entry: Omit<LeaderboardEntry, "id" | "createdAt">) {
+  const scores = readLeaderboard();
+  scores.push({
+    ...entry,
+    id: Math.random().toString(36).substring(2) + Date.now().toString(36),
+    createdAt: new Date().toISOString(),
+  });
+  scores.sort((a, b) => a.finishTime - b.finishTime);
+  localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(scores.slice(0, 20)));
 }
 
 const HORSES: HorseConfig[] = [
@@ -122,17 +147,17 @@ const BRAND = {
 };
 
 const HORSE_MODELS: Record<string, string> = {
-  rebels_romance: "/models/rebels_romance.glb",
-  muraad: "/models/muraad.glb",
-  commissioner_king: "/models/commissioner_king.glb",
-  el_nasseeb: "/models/rebels_romance.glb?v=el_nasseeb",
+  rebels_romance: `${import.meta.env.BASE_URL}models/rebels_romance.glb`,
+  muraad: `${import.meta.env.BASE_URL}models/muraad.glb`,
+  commissioner_king: `${import.meta.env.BASE_URL}models/commissioner_king.glb`,
+  el_nasseeb: `${import.meta.env.BASE_URL}models/rebels_romance.glb?v=el_nasseeb`,
 };
 
 const HORSE_IMAGES: Record<string, string> = {
-  rebels_romance: "/images/horses/rebels_romance.png",
-  muraad: "/images/horses/muraad.png",
-  commissioner_king: "/images/horses/commissioner_king.png",
-  el_nasseeb: "/images/horses/el_nasseeb.png",
+  rebels_romance: `${import.meta.env.BASE_URL}images/horses/rebels_romance.png`,
+  muraad: `${import.meta.env.BASE_URL}images/horses/muraad.png`,
+  commissioner_king: `${import.meta.env.BASE_URL}images/horses/commissioner_king.png`,
+  el_nasseeb: `${import.meta.env.BASE_URL}images/horses/el_nasseeb.png`,
 };
 
 const HORSE_ROT_Y: Record<string, number> = {
@@ -143,21 +168,21 @@ const HORSE_ROT_Y: Record<string, number> = {
 };
 
 const SCENE_MODELS: Record<string, string> = {
-  spectator_standing: "/models/spectator_standing.glb",
-  spectator_cheering: "/models/spectator_cheering.glb",
-  spectator_seated: "/models/spectator_seated.glb",
-  grandstand: "/models/grandstand.glb",
-  start_gate: "/models/start_gate.glb",
-  finish_post: "/models/finish_post.glb",
-  fence_segment: "/models/fence_segment.glb",
-  billboard_frame: "/models/billboard_frame.glb",
-  palm_tree: "/models/palm_tree.glb",
-  flag_pole: "/models/flag_pole.glb",
-  barrier: "/models/barrier.glb",
+  spectator_standing: `${import.meta.env.BASE_URL}models/spectator_standing.glb`,
+  spectator_cheering: `${import.meta.env.BASE_URL}models/spectator_cheering.glb`,
+  spectator_seated: `${import.meta.env.BASE_URL}models/spectator_seated.glb`,
+  grandstand: `${import.meta.env.BASE_URL}models/grandstand.glb`,
+  start_gate: `${import.meta.env.BASE_URL}models/start_gate.glb`,
+  finish_post: `${import.meta.env.BASE_URL}models/finish_post.glb`,
+  fence_segment: `${import.meta.env.BASE_URL}models/fence_segment.glb`,
+  billboard_frame: `${import.meta.env.BASE_URL}models/billboard_frame.glb`,
+  palm_tree: `${import.meta.env.BASE_URL}models/palm_tree.glb`,
+  flag_pole: `${import.meta.env.BASE_URL}models/flag_pole.glb`,
+  barrier: `${import.meta.env.BASE_URL}models/barrier.glb`,
 };
 
 const SPRITE_IMAGES = {
-  grandstand: "/images/sprites/grandstand.png",
+  grandstand: `${import.meta.env.BASE_URL}images/sprites/grandstand.png`,
 };
 
 const spriteTextureCache = new Map<string, THREE.Texture>();
@@ -229,14 +254,14 @@ function GLBSceneModel({
 }
 
 const SPONSOR_IMAGES = [
-  "/images/sponsors/longines.png",
-  "/images/sponsors/emirates.png",
-  "/images/sponsors/dpworld.png",
-  "/images/sponsors/nakheel.png",
-  "/images/sponsors/derby.png",
-  "/images/sponsors/azizi.png",
-  "/images/sponsors/emaar.png",
-  "/images/sponsors/altayer.png",
+  `${import.meta.env.BASE_URL}images/sponsors/longines.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/emirates.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/dpworld.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/nakheel.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/derby.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/azizi.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/emaar.png`,
+  `${import.meta.env.BASE_URL}images/sponsors/altayer.png`,
 ];
 
 function ProceduralHorseFallback({
@@ -777,7 +802,7 @@ function SideViewTrack({ trackLength }: { trackLength: number }) {
 }
 
 function PalmTreeInstance({ position, scale, rotY }: { position: [number, number, number]; scale: number; rotY: number }) {
-  const { scene } = useGLTF("/models/palm_tree.glb");
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/palm_tree.glb`);
   const clone = useMemo(() => {
     const c = scene.clone(true);
     c.traverse((child: any) => {
@@ -1691,7 +1716,7 @@ function TrackHoofMarks({ trackLength }: { trackLength: number }) {
 
 function DubaiSkyline({ trackLength }: { trackLength: number }) {
   const texture = useMemo(() => {
-    const tex = new THREE.TextureLoader().load("/images/dubai_skyline_panorama.jpg");
+    const tex = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}images/dubai_skyline_panorama.jpg`);
     tex.colorSpace = THREE.SRGBColorSpace;
     return tex;
   }, []);
@@ -2289,7 +2314,7 @@ function IntroScreen({ onSkip }: { onSkip: () => void }) {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        src="/videos/night_race.mp4"
+        src={`${import.meta.env.BASE_URL}videos/night_race.mp4`}
       />
 
       <div className="relative z-10 flex flex-col items-center justify-center">
@@ -2330,7 +2355,7 @@ function MenuScreen({ onBeginRace, onLeaderboard }: { onBeginRace: () => void; o
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-20"
-        src="/videos/night_race.mp4"
+        src={`${import.meta.env.BASE_URL}videos/night_race.mp4`}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40" />
 
@@ -2341,7 +2366,7 @@ function MenuScreen({ onBeginRace, onLeaderboard }: { onBeginRace: () => void; o
           transition={{ delay: 0.2 }}
           className="flex items-center justify-center mt-2"
         >
-          <img src="/images/dwc-30th-logo.png" alt="DWC 30th Anniversary" className="w-[260px] max-w-[80vw] object-contain" style={{ filter: 'brightness(0)' }} />
+          <img src={`${import.meta.env.BASE_URL}images/dwc-30th-logo.png`} alt="DWC 30th Anniversary" className="w-[260px] max-w-[80vw] object-contain" style={{ filter: 'brightness(0)' }} />
         </motion.div>
 
         <div className="flex flex-col items-center">
@@ -2379,7 +2404,7 @@ function MenuScreen({ onBeginRace, onLeaderboard }: { onBeginRace: () => void; o
           transition={{ delay: 0.5 }}
           className="flex flex-col items-center gap-4"
         >
-          <img src="/images/dubai-culture-logo.png" alt="Dubai Culture" className="h-8 object-contain" style={{ filter: "invert(1)" }} />
+          <img src={`${import.meta.env.BASE_URL}images/dubai-culture-logo.png`} alt="Dubai Culture" className="h-8 object-contain" style={{ filter: "invert(1)" }} />
           <div className="flex items-center gap-2 text-[#5C3D2E]/50 text-xs">
             <Crown size={12} />
             <span>30th Anniversary Edition</span>
@@ -3088,13 +3113,8 @@ function LeaderboardScreen({ onBack }: { onBack: () => void }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/race/leaderboard?limit=20")
-      .then((r) => r.json())
-      .then((data) => {
-        setScores(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+    setScores(readLeaderboard());
+    setLoading(false);
   }, []);
 
   return (
@@ -3166,7 +3186,6 @@ export default function HorseRace() {
   const [trackType, setTrackType] = useState<"short" | "long">("short");
   const [raceResult, setRaceResult] = useState<RaceResult | null>(null);
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
-  const { participantId } = useJourney();
   const [, navigate] = useLocation();
 
   const handleRaceEnd = useCallback((result: RaceResult) => {
@@ -3176,21 +3195,15 @@ export default function HorseRace() {
 
   const handleSubmitScore = useCallback(async () => {
     if (!raceResult || scoreSubmitted) return;
-    try {
-      await apiRequest("POST", "/api/race/submit-score", {
-        participantId: participantId,
-        horseName: raceResult.horseName,
-        horseId: raceResult.horseId,
-        trackType: raceResult.trackType,
-        finishTime: raceResult.finishTime,
-        rank: raceResult.rank,
-      });
-      setScoreSubmitted(true);
-      setScreen("leaderboard");
-    } catch (err) {
-      console.error("Failed to submit score:", err);
-    }
-  }, [raceResult, scoreSubmitted, participantId]);
+    saveLeaderboardEntry({
+      horseName: raceResult.horseName,
+      finishTime: raceResult.finishTime,
+      rank: raceResult.rank,
+      trackType: raceResult.trackType,
+    });
+    setScoreSubmitted(true);
+    setScreen("leaderboard");
+  }, [raceResult, scoreSubmitted]);
 
   const handleShare = useCallback(async () => {
     if (!raceResult) return;

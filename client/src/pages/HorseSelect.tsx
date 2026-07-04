@@ -61,7 +61,7 @@ export default function HorseSelect() {
   return (
     <div className="h-screen h-[100dvh] w-full flex flex-col relative overflow-hidden font-sans bg-[var(--bg)]">
       <div className="absolute inset-0 z-0">
-        <img src="/images/hoof-pattern.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.25] pointer-events-none" />
+        <img src={`${import.meta.env.BASE_URL}images/hoof-pattern.png`} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.25] pointer-events-none" />
       </div>
       <header className="relative z-20 flex items-center justify-between px-5 pb-0 pt-[60px]">
         <button

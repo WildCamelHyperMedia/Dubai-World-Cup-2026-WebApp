@@ -18,7 +18,7 @@ export default function SaduBorder({ variant = "divider", className = "" }: Sadu
         <div
           className="w-full h-16"
           style={{
-            backgroundImage: 'url(/images/patterns/sadu-blue-border.jpg)',
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/patterns/sadu-blue-border.jpg)`,
             backgroundSize: 'auto 100%',
             backgroundRepeat: 'repeat-x',
             backgroundPosition: 'center',
@@ -43,7 +43,7 @@ export default function SaduBorder({ variant = "divider", className = "" }: Sadu
       <div
         className={`w-full ${variant === "accent" ? "h-10" : "h-8"}`}
         style={{
-          backgroundImage: 'url(/images/sadu-border.jpg)',
+          backgroundImage: `url(${import.meta.env.BASE_URL}images/sadu-border.jpg)`,
           backgroundSize: 'auto 100%',
           backgroundRepeat: 'repeat-x',
           backgroundPosition: 'center',

@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import dwc30Logo from "@/assets/images/dwc-30th-logo-04-cropped.png";
 import SaduPattern from "@/components/SaduPattern";
 
-const captureBg = "/images/capture-bg.png";
+const captureBg = `${import.meta.env.BASE_URL}images/capture-bg.png`;
 
 
 type CameraState = "idle" | "requesting" | "granted" | "denied";
@@ -289,7 +289,7 @@ export default function Capture() {
     const centerX = canvasW / 2;
 
     try {
-      const badgeImg = await loadImage("/images/badges/gold-badge.png");
+      const badgeImg = await loadImage(`${import.meta.env.BASE_URL}images/badges/gold-badge.png`);
       const badgeSize = 160;
       const badgeX = centerX - badgeSize / 2;
       const badgeY = bottomStartY - badgeSize * 0.45;
@@ -408,7 +408,7 @@ export default function Capture() {
 
   return (
     <div className="h-screen h-[100dvh] w-full bg-[var(--bg)] flex flex-col relative overflow-hidden font-sans">
-      <img src="/images/hoof-pattern.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.25] pointer-events-none z-0" />
+      <img src={`${import.meta.env.BASE_URL}images/hoof-pattern.png`} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.25] pointer-events-none z-0" />
       <canvas ref={canvasRef} className="hidden" />
 
       {!captured ? (
@@ -419,7 +419,6 @@ export default function Capture() {
               autoPlay
               playsInline
               muted
-              // @ts-expect-error webkit-playsinline needed for iOS Safari
               webkit-playsinline="true"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ transform: camera.facingMode === "user" ? "scaleX(-1)" : "none" }}
@@ -700,7 +699,7 @@ export default function Capture() {
                         className="relative w-20 h-20 mb-3"
                       >
                         <img
-                          src="/images/badges/gold-badge.png"
+                          src={`${import.meta.env.BASE_URL}images/badges/gold-badge.png`}
                           alt="Gold Badge"
                           className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(196,136,58,0.5)]"
                           data-testid="img-gold-badge-celebration"

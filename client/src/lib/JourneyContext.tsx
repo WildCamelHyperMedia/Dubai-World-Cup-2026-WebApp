@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { apiRequest } from "./queryClient";
 import { type BaseHorse, getHorseImage, VALID_HORSES } from "./horses";
 import { STATION_IDS, ALL_STATION_IDS, type StationId } from "./crafts";
 
@@ -90,7 +89,7 @@ export function JourneyProvider({ children }: { children: React.ReactNode }) {
     return localStorage.getItem("participantId");
   });
 
-  const [isGuest, setIsGuest] = useState(() => {
+  const [isGuest] = useState(() => {
     return localStorage.getItem("isGuest") === "true";
   });
 
@@ -155,80 +154,34 @@ export function JourneyProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("unlockedStations", JSON.stringify(unlockedStations));
   }, [unlockedStations]);
 
-  useEffect(() => {
-    if (!participantId) return;
-    apiRequest("GET", `/api/participants/${participantId}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.baseHorse && VALID_HORSES.includes(data.baseHorse)) {
-          setBaseHorseState(data.baseHorse as BaseHorse);
-        }
-        if (data.customizations) {
-          if (Array.isArray(data.customizations)) {
-            const migrated: Record<string, string> = {};
-            for (const item of data.customizations) {
-              if (typeof item === "string" && DEFAULT_OPTION_FOR_STATION[item]) {
-                migrated[item] = DEFAULT_OPTION_FOR_STATION[item];
-              }
-            }
-            setCustomizations(migrated);
-          } else if (typeof data.customizations === "object") {
-            setCustomizations(normalizeCustomizations(data.customizations));
-          }
-        }
-        if (data.points) setPoints(data.points);
-        if (data.unlockedStations) setUnlockedStations(data.unlockedStations);
-        setIsGuest(!!data.isGuest);
-        localStorage.setItem("isGuest", data.isGuest ? "true" : "false");
-      })
-      .catch(() => {});
-  }, [participantId]);
-
   const setHorseName = useCallback((name: string) => {
     setHorseNameState(name);
   }, []);
 
   const setBaseHorse = useCallback((horse: BaseHorse) => {
     setBaseHorseState(horse);
-    if (participantId) {
-      apiRequest("PATCH", `/api/participants/${participantId}/horse`, { baseHorse: horse }).catch(() => {});
-    }
-  }, [participantId]);
+  }, []);
 
   const setCustomization = useCallback((stationId: string, optionId: string) => {
     setCustomizations(prev => ({ ...prev, [stationId]: optionId }));
-    if (participantId) {
-      apiRequest("PATCH", `/api/participants/${participantId}/customize`, { stationId, optionId }).catch(() => {});
-    }
-  }, [participantId]);
+  }, []);
 
   const addPoints = useCallback((amount: number) => {
     setPoints(prev => prev + amount);
   }, []);
 
-  const unlockStation = useCallback((stationId: string, unlockToken?: string) => {
+  const unlockStation = useCallback((stationId: string, _unlockToken?: string) => {
     setUnlockedStations(prev => {
       if (!prev.includes(stationId)) {
         return [...prev, stationId];
       }
       return prev;
     });
-    if (participantId && unlockToken) {
-      apiRequest("PATCH", `/api/participants/${participantId}/unlock`, { stationId, unlockToken }).catch(() => {});
-    }
-  }, [participantId]);
+  }, []);
 
-  const markCaptured = useCallback(() => {
-    if (participantId) {
-      apiRequest("PATCH", `/api/participants/${participantId}/capture`).catch(() => {});
-    }
-  }, [participantId]);
+  const markCaptured = useCallback(() => {}, []);
 
-  const markShared = useCallback(() => {
-    if (participantId) {
-      apiRequest("PATCH", `/api/participants/${participantId}/share`).catch(() => {});
-    }
-  }, [participantId]);
+  const markShared = useCallback(() => {}, []);
 
   const resetJourney = useCallback(() => {
     setParticipantId(null);

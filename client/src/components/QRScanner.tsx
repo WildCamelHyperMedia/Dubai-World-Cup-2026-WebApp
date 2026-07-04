@@ -2,8 +2,16 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, CheckCircle, AlertCircle, Loader2, Camera, Keyboard } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { apiRequest } from "@/lib/queryClient";
 import jsQR from "jsqr";
+
+const STATION_UNLOCK_CODES: Record<string, string> = {
+  TALLI30: "talli",
+  SADU30: "sadu",
+  SADDLE30: "saddle",
+  POTTERY30: "pottery",
+  SILK30: "silk",
+  ALKHOUS30: "alkhous",
+};
 
 interface QRScannerProps {
   participantId: string | null;
@@ -42,36 +50,21 @@ export default function QRScanner({ participantId, onSuccess, onClose }: QRScann
     setStatus("verifying");
     setErrorMsg("");
 
-    try {
-      const res = await apiRequest("POST", "/api/stations/verify-code", {
-        participantId,
-        code: code.trim(),
-      });
-      const data = await res.json();
+    const stationId = STATION_UNLOCK_CODES[code.trim().toUpperCase()];
 
-      if (data.success) {
-        setStatus("success");
-        setTimeout(() => {
-          onSuccess(data.stationId, data.unlockToken);
-        }, 1500);
-      } else {
-        setStatus("error");
-        if (data.error === "already_unlocked") {
-          setErrorMsg(t("scanner_already_unlocked"));
-        } else if (data.error === "wrong_order") {
-          const stationName = data.nextStationId ? t(`station_${data.nextStationId}`) : t("scanner_previous_station");
-          setErrorMsg(t("scanner_wrong_order", { stationName }));
-        } else {
-          setErrorMsg(t("scanner_invalid_code"));
-        }
-        isProcessingRef.current = false;
-      }
-    } catch {
+    if (stationId) {
+      const unlockToken =
+        Math.random().toString(36).substring(2) + Date.now().toString(36);
+      setStatus("success");
+      setTimeout(() => {
+        onSuccess(stationId, unlockToken);
+      }, 1500);
+    } else {
       setStatus("error");
-      setErrorMsg(t("scanner_error"));
+      setErrorMsg(t("scanner_invalid_code"));
       isProcessingRef.current = false;
     }
-  }, [participantId, onSuccess, t]);
+  }, [onSuccess, t]);
 
   const handleQrDetected = useCallback((data: string) => {
     if (isProcessingRef.current) return;

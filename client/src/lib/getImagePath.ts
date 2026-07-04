@@ -32,7 +32,7 @@ export const getCombinedImagePath = (
         parts.push(optionId);
       }
     }
-    return parts.length === 0 ? baseImage : `/images/combos/${horseId}-${parts.join("-")}.png`;
+    return parts.length === 0 ? baseImage : `${import.meta.env.BASE_URL}images/combos/${horseId}-${parts.join("-")}.webp`;
   }
 
   const parts: string[] = [];
@@ -47,5 +47,5 @@ export const getCombinedImagePath = (
     return baseImage;
   }
 
-  return `/images/combos/${horseId}-${parts.join("-")}.png`;
+  return `${import.meta.env.BASE_URL}images/combos/${horseId}-${parts.join("-")}.webp`;
 };

@@ -27,7 +27,7 @@ export default function HorseVideoPlayer({
   const [videoAvailable, setVideoAvailable] = useState(true);
 
   const getVideoSrc = useCallback(
-    (action: HorseAction) => `/videos/${horseColor}-${action}.mp4`,
+    (action: HorseAction) => `${import.meta.env.BASE_URL}videos/${horseColor}-${action}.mp4`,
     [horseColor]
   );
 

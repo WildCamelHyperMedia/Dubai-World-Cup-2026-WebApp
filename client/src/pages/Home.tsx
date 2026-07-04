@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import dwc30Logo from "@/assets/images/dwc-30th-logo-04-cropped.png";
 import dubaiCultureLogo from "@/assets/images/dubai-culture-logo.png";
 
-const racingVideo = "/videos/heritage_crafts_bg.mp4";
+const racingVideo = `${import.meta.env.BASE_URL}videos/heritage_crafts_bg.mp4`;
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -77,17 +77,6 @@ export default function Home() {
             </p>
           </motion.div>
         </div>
-
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          onClick={() => setLocation("/admin")}
-          className="absolute top-6 right-5 text-white/30 text-[10px] tracking-[0.2em] uppercase hover:text-white/60 transition-colors z-20"
-          data-testid="button-admin-access"
-        >
-          ⬡
-        </motion.button>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

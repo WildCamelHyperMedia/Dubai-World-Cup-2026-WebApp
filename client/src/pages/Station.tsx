@@ -100,7 +100,7 @@ export default function Station() {
 
   return (
     <div className="h-screen h-[100dvh] w-full flex flex-col relative overflow-hidden font-sans bg-[var(--bg)]">
-      <img src="/images/hoof-pattern.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.25] pointer-events-none z-0" />
+      <img src={`${import.meta.env.BASE_URL}images/hoof-pattern.png`} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.25] pointer-events-none z-0" />
       <AnimatePresence mode="wait">
         {step === 1 ? (
           <motion.div
@@ -401,7 +401,7 @@ export default function Station() {
                         className="relative w-20 h-20 mb-3"
                       >
                         <img
-                          src="/images/badges/silver-badge.png"
+                          src={`${import.meta.env.BASE_URL}images/badges/silver-badge.png`}
                           alt="Silver Badge"
                           className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(192,192,192,0.5)]"
                           data-testid="img-silver-badge-station"

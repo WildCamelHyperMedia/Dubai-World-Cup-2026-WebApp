@@ -9,11 +9,11 @@ interface SaduPatternProps {
 }
 
 const IMAGE_MAP: Record<string, string> = {
-  "blue": "/images/patterns/sadu-blue-grid.jpg",
-  "cream": "/images/patterns/sadu-cream-grid.jpg",
-  "rows": "/images/patterns/sadu-blue-rows.jpg",
-  "detail-blue": "/images/patterns/sadu-blue-border.jpg",
-  "detail-cream": "/images/patterns/sadu-cream-large.jpg",
+  "blue": `${import.meta.env.BASE_URL}images/patterns/sadu-blue-grid.jpg`,
+  "cream": `${import.meta.env.BASE_URL}images/patterns/sadu-cream-grid.jpg`,
+  "rows": `${import.meta.env.BASE_URL}images/patterns/sadu-blue-rows.jpg`,
+  "detail-blue": `${import.meta.env.BASE_URL}images/patterns/sadu-blue-border.jpg`,
+  "detail-cream": `${import.meta.env.BASE_URL}images/patterns/sadu-cream-large.jpg`,
 };
 
 export default function SaduPattern({ 

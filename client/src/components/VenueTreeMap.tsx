@@ -71,7 +71,7 @@ export default function VenueTreeMap() {
   const mapContent = (
     <div className="relative w-full h-full bg-black">
       <img
-        src="/images/heritage-trail-map-labeled.jpg"
+        src={`${import.meta.env.BASE_URL}images/heritage-trail-map-labeled.jpg`}
         alt={t("Heritage Trail Map")}
         className="absolute inset-0 w-full h-full object-contain"
         draggable={false}

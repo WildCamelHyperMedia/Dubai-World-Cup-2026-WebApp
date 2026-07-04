@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Guesswhat';
-  src: url('/fonts/guesswhat.ttf') format('truetype');
+  src: url('/Dubai-World-Cup-2026-WebApp/fonts/guesswhat.ttf') format('truetype');
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
@@ -115,7 +115,7 @@ html[dir="rtl"] a {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/images/patterns/sadu-cream-grid.jpg');
+    background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
     background-size: 260px;
     background-repeat: repeat;
     opacity: 0.035;
@@ -151,7 +151,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-blue-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-grid.jpg');
   background-size: 280px;
   background-repeat: repeat;
   opacity: 0.07;
@@ -216,7 +216,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 300px;
   background-repeat: repeat;
   background-position: center;
@@ -235,7 +235,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 240px;
   background-repeat: repeat;
   background-position: center;
@@ -250,7 +250,7 @@ html[dir="rtl"] a {
   left: 0;
   right: 0;
   height: 6px;
-  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-border.jpg');
   background-size: auto 100%;
   background-repeat: repeat-x;
   opacity: 0.85;
@@ -267,7 +267,7 @@ html[dir="rtl"] a {
   left: 0;
   right: 0;
   height: 8px;
-  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-border.jpg');
   background-size: auto 100%;
   background-repeat: repeat-x;
   pointer-events: none;
@@ -354,7 +354,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 200px;
   background-repeat: repeat;
   opacity: 0.10;
@@ -385,7 +385,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 180px;
   background-repeat: repeat;
   opacity: 0.08;
@@ -417,7 +417,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 260px;
   background-repeat: repeat;
   opacity: 0.04;
@@ -440,7 +440,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: -4px;
-  background-image: url('/images/patterns/sadu-cream-large.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-large.jpg');
   background-size: 120px;
   background-repeat: repeat;
   background-position: center;
@@ -458,7 +458,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 280px;
   background-repeat: repeat;
   opacity: 0.04;
@@ -473,7 +473,7 @@ html[dir="rtl"] a {
   left: 0;
   right: 0;
   height: 6px;
-  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-border.jpg');
   background-size: auto 100%;
   background-repeat: repeat-x;
   opacity: 0.6;
@@ -488,7 +488,7 @@ html[dir="rtl"] a {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 80px;
   background-repeat: repeat;
   opacity: 0.15;
@@ -504,7 +504,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 240px;
   background-repeat: repeat;
   opacity: 0.04;
@@ -518,7 +518,7 @@ html[dir="rtl"] a {
 }
 
 .sadu-bg-strip {
-  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-border.jpg');
   background-size: auto 100%;
   background-repeat: repeat-x;
   background-position: center;
@@ -531,7 +531,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-cream-grid.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-cream-grid.jpg');
   background-size: 320px;
   background-repeat: repeat;
   opacity: 0.05;
@@ -547,7 +547,7 @@ html[dir="rtl"] a {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/images/patterns/sadu-blue-rows.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-rows.jpg');
   background-size: 400px;
   background-repeat: repeat;
   opacity: 0.08;
@@ -565,7 +565,7 @@ html[dir="rtl"] a {
   left: 0;
   right: 0;
   height: 8px;
-  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-border.jpg');
   background-size: auto 100%;
   background-repeat: repeat-x;
   pointer-events: none;
@@ -581,7 +581,7 @@ html[dir="rtl"] a {
   left: 0;
   right: 0;
   height: 8px;
-  background-image: url('/images/patterns/sadu-blue-border.jpg');
+  background-image: url('/Dubai-World-Cup-2026-WebApp/images/patterns/sadu-blue-border.jpg');
   background-size: auto 100%;
   background-repeat: repeat-x;
   pointer-events: none;

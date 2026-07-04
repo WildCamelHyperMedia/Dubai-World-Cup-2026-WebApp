@@ -7,6 +7,7 @@ import { metaImagesPlugin } from "./vite-plugin-meta-images";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  base: "/Dubai-World-Cup-2026-WebApp/",
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -31,27 +32,27 @@ export default defineConfig({
         background_color: "#050810",
         display: "standalone",
         orientation: "portrait",
-        start_url: "/",
-        scope: "/",
+        start_url: "/Dubai-World-Cup-2026-WebApp/",
+        scope: "/Dubai-World-Cup-2026-WebApp/",
         icons: [
           {
-            src: "/icons/icon-192x192.png",
+            src: "/Dubai-World-Cup-2026-WebApp/icons/icon-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/icons/icon-512x512.png",
+            src: "/Dubai-World-Cup-2026-WebApp/icons/icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "/icons/icon-512x512.png",
+            src: "/Dubai-World-Cup-2026-WebApp/icons/icon-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
           },
           {
-            src: "/icons/apple-touch-icon.png",
+            src: "/Dubai-World-Cup-2026-WebApp/icons/apple-touch-icon.png",
             sizes: "180x180",
             type: "image/png",
             purpose: "any",
@@ -105,21 +106,6 @@ export default defineConfig({
               },
             },
           },
-          {
-            urlPattern: /\/api\/.*/i,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "api-responses",
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 7,
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-              networkTimeoutSeconds: 5,
-            },
-          },
         ],
       },
       devOptions: {
@@ -142,8 +128,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
     dedupe: ["react", "react-dom", "three"],
   },
