@@ -180,7 +180,7 @@ export default function Register() {
           </button>
 
           <button
-            onClick={() => setLocation("/race")}
+            onClick={() => { window.location.href = `${import.meta.env.BASE_URL}game/`; }}
             className="flex flex-col items-center gap-1 py-2.5 px-2 rounded-xl bg-gradient-to-br from-[#C4883A]/20 to-[#B89B71]/20 backdrop-blur-md border border-[#C4883A]/30 hover:bg-[#C4883A]/30 active:scale-95 transition-all"
             data-testid="button-horse-race"
           >

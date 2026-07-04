@@ -17,7 +17,6 @@ const JourneyMap = lazy(() => import("./pages/JourneyMap"));
 const Station = lazy(() => import("./pages/Station"));
 const Capture = lazy(() => import("./pages/Capture"));
 
-const HorseRace = lazy(() => import("./pages/HorseRace"));
 const NotFound = lazy(() => import("./pages/not-found"));
 
 const pageVariants = {
@@ -68,7 +67,6 @@ function Router() {
           <Route path="/journey">{() => <AnimatedRoute component={JourneyMap} />}</Route>
           <Route path="/station/:id">{() => <AnimatedRoute component={Station} />}</Route>
           <Route path="/capture">{() => <AnimatedRoute component={Capture} />}</Route>
-          <Route path="/race">{() => <AnimatedRoute component={HorseRace} />}</Route>
 
           <Route>{() => <AnimatedRoute component={NotFound} />}</Route>
         </Switch>

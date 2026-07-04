@@ -64,6 +64,11 @@ export default defineConfig({
         // (~47 MB) would otherwise be precached on first visit; the
         // static-images runtime CacheFirst rule below covers them on demand.
         globPatterns: ["**/*.{js,css,html,ico,svg,woff2}"],
+        // Gallop Mania lives at /game/ as a standalone sub-app: keep it out
+        // of the app-shell precache and never rewrite its navigations to the
+        // journey app's index.html.
+        globIgnores: ["game/**"],
+        navigateFallbackDenylist: [/\/game\//],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
@@ -147,8 +152,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          three: ["three"],
-          "react-three": ["@react-three/fiber", "@react-three/drei"],
           vendor: ["react", "react-dom", "wouter"],
         },
       },
