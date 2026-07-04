@@ -14,7 +14,7 @@ window.addEventListener("error", (e) => {
   }
 });
 
-if ("serviceWorker" in navigator) {
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
   import("virtual:pwa-register").then(({ registerSW }) => {
     const updateSW = registerSW({
       onNeedRefresh() {

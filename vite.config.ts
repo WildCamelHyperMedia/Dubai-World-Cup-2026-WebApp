@@ -14,7 +14,7 @@ export default defineConfig({
     tailwindcss(),
     metaImagesPlugin(),
     VitePWA({
-      registerType: "prompt",
+      registerType: "autoUpdate",
       includeAssets: [
         "favicon.png",
         "icons/icon-192x192.png",
@@ -70,7 +70,7 @@ export default defineConfig({
             urlPattern: /\/images\/combos\/.*/i,
             handler: "CacheFirst",
             options: {
-              cacheName: "combo-images",
+              cacheName: "combo-images-v2-alpha",
               expiration: {
                 maxEntries: 5000,
                 maxAgeSeconds: 60 * 60 * 24 * 30,
