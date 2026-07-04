@@ -60,7 +60,10 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        // png deliberately excluded: the heavy craft/heritage/sprite images
+        // (~47 MB) would otherwise be precached on first visit; the
+        // static-images runtime CacheFirst rule below covers them on demand.
+        globPatterns: ["**/*.{js,css,html,ico,svg,woff2}"],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
