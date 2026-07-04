@@ -14,4 +14,19 @@ window.addEventListener("error", (e) => {
   }
 });
 
+if ("serviceWorker" in navigator) {
+  import("virtual:pwa-register").then(({ registerSW }) => {
+    const updateSW = registerSW({
+      onNeedRefresh() {
+        if (confirm("A new version is available. Reload to update?")) {
+          updateSW(true);
+        }
+      },
+      onOfflineReady() {
+        console.log("App is ready for offline use.");
+      },
+    });
+  }).catch(() => {});
+}
+
 createRoot(document.getElementById("root")!).render(<App />);

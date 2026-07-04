@@ -114,3 +114,15 @@ id = "khGZyhb14SzkrIIiSOMTt"
 uri = "file://qr-codes-output/Launch-DRC30.png"
 type = "image"
 title = "Welcome QR — Launch the Experience"
+
+[[outputs]]
+id = "VD2TYSGKoMv1snY3K9dE7"
+uri = "file://dwc30-app-lite.tar.gz"
+type = "unspecified"
+title = "DWC30 App - Lite (86 MB, no videos)"
+
+[[outputs]]
+id = "u7LBOB7mOtEYdAVihB8jH"
+uri = "file://dwc30-app.tar.gz"
+type = "unspecified"
+title = "DWC30 App - Full Source Code (197 MB)"

@@ -52,5 +52,6 @@ The application is built as a single-page application with a React-based fronten
 - **Database optimization:** Stats query uses SQL aggregation instead of loading all rows into memory.
 - **Server-side image serving:** Combo and horse images (3 GB+) served via Express static middleware from `server/assets/images/` instead of being bundled with Vite, keeping production builds under 120 MB.
 - **Video preloading:** Sequential instead of parallel to avoid choking mobile connections.
-- **Font optimization:** Only required font weights loaded; `display=swap` and preload hints.
+- **Font optimization:** Only required font weights loaded; `display=swap` and preload hints. Google Fonts (Felipa, Outfit, Playfair Display) self-hosted in `client/public/fonts/` for offline availability.
+- **PWA (Progressive Web App):** Full offline support via `vite-plugin-pwa` with Workbox. Service worker precaches the app shell (HTML, JS, CSS). Runtime caching strategies: CacheFirst for combo images (dedicated `combo-images` cache with 5000 entry limit), CacheFirst for fonts and static images, CacheFirst with range requests for videos, NetworkFirst with 5s timeout for API responses. Web app manifest enables "Add to Home Screen" with standalone display mode. Offline indicator component shows connection status.
 - **Logging:** Removed per-response JSON.stringify from server logging middleware.

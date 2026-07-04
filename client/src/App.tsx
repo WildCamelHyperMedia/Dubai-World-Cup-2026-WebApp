@@ -7,6 +7,7 @@ import { JourneyProvider } from "./lib/JourneyContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { Component, type ReactNode, lazy, Suspense } from "react";
 import "./lib/i18n";
+import OfflineIndicator from "./components/OfflineIndicator";
 
 import Home from "./pages/Home";
 
@@ -120,6 +121,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <JourneyProvider>
             <TooltipProvider>
+              <OfflineIndicator />
               <Toaster />
               <Router />
             </TooltipProvider>
