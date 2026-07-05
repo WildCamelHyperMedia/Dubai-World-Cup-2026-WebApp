@@ -16,20 +16,53 @@
 
 ---
 
-## What this is
+> [!NOTE]
+> **This branch is a static demo.** The real application is a full-stack
+> product built for live event operation; what is deployed here is a
+> self-contained, backend-free version of it for GitHub Pages, so the
+> experience can be tried without any infrastructure. Nothing here talks
+> to a server — no accounts, no analytics, no data leaves the browser.
 
-This branch (`pages-demo`) is a **fully static demo** of the DWC30 event app,
-deployed to GitHub Pages. The production app runs with an Express/Postgres
-backend; here every server dependency has been replaced with a client-side
-equivalent so the whole experience runs from static hosting:
+## The full application
 
-| Production | Static demo |
+In production the app runs as a complete event platform with an
+**Express + PostgreSQL (Drizzle ORM) backend**:
+
+- **Registration & login** — visitors sign up with name, mobile and email;
+  identity is confirmed with **one-time codes (OTP)** sent on signup and
+  login, and sessions are managed server-side. A "skip as guest" path
+  creates an anonymous participant that can be upgraded to a full
+  registration later.
+- **Server-verified station unlocks** — each craft station at the venue has
+  a printed QR code; scanning it is validated by the backend, which enforces
+  valid codes and issues one-time unlock tokens per participant.
+- **Persistent journey state** — horse choice, gear customizations, points,
+  unlocked stations, AR captures and shares are written to the database, so
+  a participant can continue on any device.
+- **Admin dashboard** — a PIN-protected `/admin` area with live participation
+  stats, participant search and activity timelines, and printable QR sheets
+  for the stations.
+- **Asset pipeline** — the 2,184 horse/gear combination images are generated
+  offline and served from object storage behind caching headers.
+- **Race leaderboard** — Gallop Mania scores post to the backend for a global
+  event leaderboard.
+
+## What this demo changes
+
+Every server dependency is replaced with a client-side equivalent, feature
+for feature:
+
+| In production | In this static demo |
 |---|---|
-| Participant registration + OTP login | Guest entry with a local `crypto.randomUUID()` |
-| Server-verified station unlock codes | Client-side code map |
-| Server-persisted journey state | `localStorage` |
-| Combo images served from object storage | 2,184 pre-rendered transparent `.webp` files |
-| Race leaderboard API | `localStorage` leaderboard |
+| Registration + OTP login, server sessions | Guest-only entry: a local `crypto.randomUUID()` participant id |
+| Backend-validated QR codes + unlock tokens | Client-side station-code map |
+| Journey state in PostgreSQL | `localStorage` |
+| Combos served from object storage | 2,184 pre-rendered transparent `.webp` files shipped with the site |
+| Global race leaderboard API | Per-device `localStorage` leaderboard |
+| Admin dashboard | Removed |
+
+Everything else — the trail, the customization system, the AR capture, the
+bilingual UI, the game — is the production experience, unchanged.
 
 ## The experience
 
@@ -83,9 +116,6 @@ publishes `dist/public` to GitHub Pages.
   never intercepts game navigations.
 - Deep links work on Pages through the `404.html` SPA fallback; camera capture
   requires HTTPS, which `github.io` provides.
-
-Because this is a demo build, everything is intentionally client-side:
-no analytics, no accounts, no data leaves the browser.
 
 ---
 
